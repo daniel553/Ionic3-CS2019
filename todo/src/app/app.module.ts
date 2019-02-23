@@ -11,7 +11,7 @@ import { HttpModule } from '@angular/http';
 
 
 import { TodoProvider } from '../providers/todo/todo';
-import { ArchivedTodosPage } from "../pages/archived-todos/archived-todos"
+import { ArchivedTodosPage } from "../pages/archived-todos/archived-todos";
 
 
 
