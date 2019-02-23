@@ -26,6 +26,10 @@ export class TodoProvider {
   	return this.todos;
   }
 
+  getArchivedTodos(){
+    return this.archivedTodos;
+  }
+
   addTodo(todo){
   	this.todos.push(todo);
   }
