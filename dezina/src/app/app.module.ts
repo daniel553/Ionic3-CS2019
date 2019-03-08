@@ -14,6 +14,7 @@ import { HttpModule } from "@angular/http";
 import { HttpClientModule } from '@angular/common/http';
 import { ProductProvider } from '../providers/product/product';
 import { ProductDetailPage } from "../pages/product-detail/product-detail";
+import { FilterModalPage } from "../pages/filter-modal/filter-modal";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ProductDetailPage } from "../pages/product-detail/product-detail";
     ContactPage,
     HomePage,
     TabsPage,
-    ProductDetailPage
+    ProductDetailPage,
+    FilterModalPage
   ],
   imports: [
     HttpModule,
@@ -37,7 +39,8 @@ import { ProductDetailPage } from "../pages/product-detail/product-detail";
     ContactPage,
     HomePage,
     TabsPage,
-    ProductDetailPage
+    ProductDetailPage,
+    FilterModalPage
   ],
   providers: [
     StatusBar,

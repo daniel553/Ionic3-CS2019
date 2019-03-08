@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { HttpModule } from "@angular/http";
 import "rxjs/add/operator/map";
 
-import { NavController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
 import { ProductProvider } from '../../providers/product/product';
 
 import { ProductDetailPage } from "../product-detail/product-detail";
-
+import { FilterModalPage } from "../filter-modal/filter-modal";
 
 @Component({
   selector: 'page-home',
@@ -19,7 +19,7 @@ export class HomePage {
 	*	This is the main constructor of the page and only load once	
 	*	@constructs
 	*/
-  constructor(private productProvider: ProductProvider, private http: HttpModule, public navCtrl: NavController) {
+  constructor(private modalController: ModalController, private productProvider: ProductProvider, private http: HttpModule, public navCtrl: NavController) {
 
   }
 
@@ -31,6 +31,16 @@ export class HomePage {
   ionViewCanEnter(){
 
   }
+
+  /**
+  *  This function make the functionality to the bottom right button
+  *  @function
+  */
+  openFilterModal(){
+    let openFilterModal = this.modalController.create(FilterModalPage);
+    openFilterModal.present();
+  }
+
 
   /**
 	*	This event fires when all internals are set up and ready to go
