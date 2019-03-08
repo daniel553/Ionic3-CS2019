@@ -16,6 +16,10 @@ export class ProductProvider {
     console.log('Hello ProductProvider Provider');
   }
 
+  /**
+  *  This function call all the list of products from data.json via a provider
+  *  @function
+  */
   getProducts(){
   	return this.http.get('../../assets/data.json');
   }

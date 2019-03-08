@@ -5,11 +5,15 @@ import "rxjs/add/operator/map";
 import { NavController } from 'ionic-angular';
 import { ProductProvider } from '../../providers/product/product';
 
+import { ProductDetailPage } from "../product-detail/product-detail";
+
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+  public allProducts = []; 
 
 	/**
 	*	This is the main constructor of the page and only load once	
@@ -34,8 +38,23 @@ export class HomePage {
   	*	@function
   */
   ionViewDidLoad(){
+  /**
+    Specifically this function load all the products
+  */
     this.productProvider.getProducts()
-      .subscribe(response => console.log(response));
+      .subscribe((response: any[]) => {
+        this.allProducts = response;
+      });
+  }
+
+  /**
+  *  This functions send the user to the DetailPage
+  *  @function
+  */
+  goToProductDetailPage(product){
+      this.navCtrl.push(ProductDetailPage, {
+        productDetails: product
+      });
   }
 
   /**
