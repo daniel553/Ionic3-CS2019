@@ -20,7 +20,7 @@ export class AboutPage {
   */
   ionViewDidLoad(){
   	this.productProvider.getProducts()
-  		.subscribe((allProducts)=> {
+  		.subscribe((allProducts: Array<any>)=> {
   			this.bestSellerProducts = allProducts.filter(product=> product.bestSeller == true);
   			console.log(this.bestSellerProducts);
   		});
