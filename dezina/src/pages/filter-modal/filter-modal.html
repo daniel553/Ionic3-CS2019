@@ -6,6 +6,9 @@
 -->
 <ion-header>
   <ion-navbar>
+    <!--
+      *This labels put a close button in the modal window
+    -->
   	<ion-buttons end>
   		<button ion-button (click)="closeModal()">
   			<ion-icon name="close"></ion-icon>
@@ -16,5 +19,19 @@
 </ion-header>
 
 <ion-content padding>
+  <!--
+    This labels adds two toggle buttons for male and female products
+  -->
+  <ion-list>
+    <ion-item>
+      <ion-label>Female</ion-label>
+      <ion-toggle [(ngModel)]="femaleSelected"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Male</ion-label>
+      <ion-toggle [(ngModel)]="maleSelected"></ion-toggle>
+    </ion-item>
+  </ion-list>
 
 </ion-content>

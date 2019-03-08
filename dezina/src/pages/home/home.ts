@@ -14,6 +14,8 @@ import { FilterModalPage } from "../filter-modal/filter-modal";
 })
 export class HomePage {
   public allProducts = []; 
+  private femaleSelected = true;
+  private maleSelected = true;
 
 	/**
 	*	This is the main constructor of the page and only load once	
@@ -37,10 +39,38 @@ export class HomePage {
   *  @function
   */
   openFilterModal(){
-    let openFilterModal = this.modalController.create(FilterModalPage);
+    let filterStateFromMainPage = {
+      femaleSelected: this.femaleSelected,
+      maleSelected: this.maleSelected
+    };
+
+    let openFilterModal = this.modalController.create(FilterModalPage, filterStateFromMainPage);
+    openFilterModal.onDidDismiss((filterState)=>{
+      this.femaleSelected = filterState.femaleSelected;
+      this.maleSelected = filterState.maleSelected;
+      
+      this.productProvider.getProducts()
+        .subscribe((allProducts: any[])=>{
+          let products = allProducts;
+          if(filterState.maleSelected && filterState.femaleSelected){
+            this.allProducts = products;
+            return;
+          } else if(!filterState.maleSelected && !filterState.femaleSelected){
+            this.allProducts = [];
+            return;
+          }else if(!filterState.maleSelected && filterState.femaleSelected){
+            this.allProducts = products.filter((product)=>{
+               return product.gender !== "male";
+            });
+          }else{
+            this.allProducts = products.filter((product)=>{
+               return product.gender !== "female";
+            });
+          }
+        });
+    });
     openFilterModal.present();
   }
-
 
   /**
 	*	This event fires when all internals are set up and ready to go

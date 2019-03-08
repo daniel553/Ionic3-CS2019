@@ -255,6 +255,8 @@ var HomePage = /** @class */ (function () {
         this.http = http;
         this.navCtrl = navCtrl;
         this.allProducts = [];
+        this.femaleSelected = true;
+        this.maleSelected = true;
     }
     /**
       *	This event determines if a user can enter a page or not
@@ -268,7 +270,38 @@ var HomePage = /** @class */ (function () {
     *  @function
     */
     HomePage.prototype.openFilterModal = function () {
-        var openFilterModal = this.modalController.create(__WEBPACK_IMPORTED_MODULE_6__filter_modal_filter_modal__["a" /* FilterModalPage */]);
+        var _this = this;
+        var filterStateFromMainPage = {
+            femaleSelected: this.femaleSelected,
+            maleSelected: this.maleSelected
+        };
+        var openFilterModal = this.modalController.create(__WEBPACK_IMPORTED_MODULE_6__filter_modal_filter_modal__["a" /* FilterModalPage */], filterStateFromMainPage);
+        openFilterModal.onDidDismiss(function (filterState) {
+            _this.femaleSelected = filterState.femaleSelected;
+            _this.maleSelected = filterState.maleSelected;
+            _this.productProvider.getProducts()
+                .subscribe(function (allProducts) {
+                var products = allProducts;
+                if (filterState.maleSelected && filterState.femaleSelected) {
+                    _this.allProducts = products;
+                    return;
+                }
+                else if (!filterState.maleSelected && !filterState.femaleSelected) {
+                    _this.allProducts = [];
+                    return;
+                }
+                else if (!filterState.maleSelected && filterState.femaleSelected) {
+                    _this.allProducts = products.filter(function (product) {
+                        return product.gender !== "male";
+                    });
+                }
+                else {
+                    _this.allProducts = products.filter(function (product) {
+                        return product.gender !== "female";
+                    });
+                }
+            });
+        });
         openFilterModal.present();
     };
     /**
@@ -424,20 +457,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var FilterModalPage = /** @class */ (function () {
-    function FilterModalPage(navCtrl, navParams) {
+    function FilterModalPage(viewController, navCtrl, navParams) {
+        this.viewController = viewController;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.femaleSelected = true;
+        this.maleSelected = true;
+        this.femaleSelected = this.navParams.get("femaleSelected");
+        this.maleSelected = this.navParams.get("maleSelected");
     }
     FilterModalPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad FilterModalPage');
     };
+    /**
+    * Metho to close the modal window and send gender selection to home
+    * @method
+    */
+    FilterModalPage.prototype.closeModal = function () {
+        var filterState = {
+            femaleSelected: this.femaleSelected,
+            maleSelected: this.maleSelected
+        };
+        this.viewController.dismiss(filterState);
+        //this.navCtrl.pop();
+    };
     FilterModalPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-filter-modal',template:/*ion-inline-start:"/home/chuy/Documentos/tripletres/Ionic3practicaNueva/Ionic3-CS2019/dezina/src/pages/filter-modal/filter-modal.html"*/'<!--\n  Generated template for the FilterModalPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n  	<ion-buttons end>\n  		<button ion-button (click)="closeModal()">\n  			<ion-icon name="close"></ion-icon>\n  		</button>\n  	</ion-buttons>\n    <ion-title>FilterModal</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/home/chuy/Documentos/tripletres/Ionic3practicaNueva/Ionic3-CS2019/dezina/src/pages/filter-modal/filter-modal.html"*/,
+            selector: 'page-filter-modal',template:/*ion-inline-start:"/home/chuy/Documentos/tripletres/Ionic3practicaNueva/Ionic3-CS2019/dezina/src/pages/filter-modal/filter-modal.html"*/'<!--\n  Generated template for the FilterModalPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <!--\n      *This labels put a close button in the modal window\n    -->\n  	<ion-buttons end>\n  		<button ion-button (click)="closeModal()">\n  			<ion-icon name="close"></ion-icon>\n  		</button>\n  	</ion-buttons>\n    <ion-title>FilterModal</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <!--\n    This labels adds two toggle buttons for male and female products\n  -->\n  <ion-list>\n    <ion-item>\n      <ion-label>Female</ion-label>\n      <ion-toggle [(ngModel)]="femaleSelected"></ion-toggle>\n    </ion-item>\n\n    <ion-item>\n      <ion-label>Male</ion-label>\n      <ion-toggle [(ngModel)]="maleSelected"></ion-toggle>\n    </ion-item>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/home/chuy/Documentos/tripletres/Ionic3practicaNueva/Ionic3-CS2019/dezina/src/pages/filter-modal/filter-modal.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ViewController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]) === "function" && _c || Object])
     ], FilterModalPage);
     return FilterModalPage;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=filter-modal.js.map
