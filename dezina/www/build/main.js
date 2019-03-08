@@ -64,12 +64,7 @@ var TabsPage = /** @class */ (function () {
     }
     TabsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/chuy/Documentos/tripletres/Ionic3practicaNueva/Ionic3-CS2019/dezina/src/pages/tabs/tabs.html"*/'<!--\n*	This labels have the three main default tabs and its parameters like icons, title, etc.\n-->\n\n<ion-tabs>\n  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/home/chuy/Documentos/tripletres/Ionic3practicaNueva/Ionic3-CS2019/dezina/src/pages/tabs/tabs.html"*/
-        })
-        /**
-        *  This class have the three main default tabs to be shown
-        *  @Class
-        */
-        ,
+        }),
         __metadata("design:paramtypes", [])
     ], TabsPage);
     return TabsPage;
