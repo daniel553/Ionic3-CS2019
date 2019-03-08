@@ -7,6 +7,12 @@ import { HomePage } from '../home/home';
 @Component({
   templateUrl: 'tabs.html'
 })
+
+/**
+*  This class have the three main default tabs to be shown
+*  @Class
+*/
+
 export class TabsPage {
 
   tab1Root = HomePage;

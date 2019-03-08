@@ -8,6 +8,11 @@ import { TabsPage } from '../pages/tabs/tabs';
 @Component({
   templateUrl: 'app.html'
 })
+/**
+*  This is the main class of the tabs project
+*  @Class
+*/
+
 export class MyApp {
   rootPage:any = TabsPage;
 

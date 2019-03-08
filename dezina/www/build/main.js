@@ -63,8 +63,13 @@ var TabsPage = /** @class */ (function () {
         this.tab3Root = __WEBPACK_IMPORTED_MODULE_2__contact_contact__["a" /* ContactPage */];
     }
     TabsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/chuy/Documentos/tripletres/Ionic3practicaNueva/Ionic3-CS2019/dezina/src/pages/tabs/tabs.html"*/'<ion-tabs>\n  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/home/chuy/Documentos/tripletres/Ionic3practicaNueva/Ionic3-CS2019/dezina/src/pages/tabs/tabs.html"*/
-        }),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/chuy/Documentos/tripletres/Ionic3practicaNueva/Ionic3-CS2019/dezina/src/pages/tabs/tabs.html"*/'<!--\n*	This labels have the three main default tabs and its parameters like icons, title, etc.\n-->\n\n<ion-tabs>\n  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/home/chuy/Documentos/tripletres/Ionic3practicaNueva/Ionic3-CS2019/dezina/src/pages/tabs/tabs.html"*/
+        })
+        /**
+        *  This class have the three main default tabs to be shown
+        *  @Class
+        */
+        ,
         __metadata("design:paramtypes", [])
     ], TabsPage);
     return TabsPage;
@@ -299,7 +304,7 @@ var MyApp = /** @class */ (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/chuy/Documentos/tripletres/Ionic3practicaNueva/Ionic3-CS2019/dezina/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/home/chuy/Documentos/tripletres/Ionic3practicaNueva/Ionic3-CS2019/dezina/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/chuy/Documentos/tripletres/Ionic3practicaNueva/Ionic3-CS2019/dezina/src/app/app.html"*/'<!--\n*	This is the main app ion-nav label and points to the rootPage\n-->\n<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/home/chuy/Documentos/tripletres/Ionic3practicaNueva/Ionic3-CS2019/dezina/src/app/app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
