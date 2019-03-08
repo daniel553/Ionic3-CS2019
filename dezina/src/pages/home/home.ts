@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
+import { HttpModule } from "@angular/http";
+import "rxjs/add/operator/map";
+
 import { NavController } from 'ionic-angular';
+import { ProductProvider } from '../../providers/product/product';
 
 @Component({
   selector: 'page-home',
@@ -11,7 +15,7 @@ export class HomePage {
 	*	This is the main constructor of the page and only load once	
 	*	@constructs
 	*/
-  constructor(public navCtrl: NavController) {
+  constructor(private productProvider: ProductProvider, private http: HttpModule, public navCtrl: NavController) {
 
   }
 
@@ -30,7 +34,8 @@ export class HomePage {
   	*	@function
   */
   ionViewDidLoad(){
-
+    this.productProvider.getProducts()
+      .subscribe(response => console.log(response));
   }
 
   /**
