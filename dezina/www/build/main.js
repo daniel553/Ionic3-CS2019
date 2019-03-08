@@ -86,6 +86,7 @@ var TabsPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AboutPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_product_product__ = __webpack_require__(202);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -97,18 +98,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var AboutPage = /** @class */ (function () {
-    function AboutPage(navCtrl) {
+    function AboutPage(productProvider, navCtrl) {
+        this.productProvider = productProvider;
         this.navCtrl = navCtrl;
+        this.bestSellerProducts = [];
     }
+    /**
+    *	This function have in stand by the list of best products
+    *	@function
+    */
+    AboutPage.prototype.ionViewDidLoad = function () {
+        var _this = this;
+        this.productProvider.getProducts()
+            .subscribe(function (allProducts) {
+            _this.bestSellerProducts = allProducts.filter(function (product) { return product.bestSeller == true; });
+            console.log(_this.bestSellerProducts);
+        });
+    };
     AboutPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-about',template:/*ion-inline-start:"/home/chuy/Documentos/tripletres/Ionic3practicaNueva/Ionic3-CS2019/dezina/src/pages/about/about.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      About\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/home/chuy/Documentos/tripletres/Ionic3practicaNueva/Ionic3-CS2019/dezina/src/pages/about/about.html"*/
+            selector: 'page-about',template:/*ion-inline-start:"/home/chuy/Documentos/tripletres/Ionic3practicaNueva/Ionic3-CS2019/dezina/src/pages/about/about.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Best Seller\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n	<!--\n	* This labels prints in the best seller page all the best seller products with a slide\n	-->\n	<ion-slides pager="true">\n		<ion-slide *ngFor="let product of bestSellerProducts">\n			<img [src]="product.image"  />\n		</ion-slide>\n	</ion-slides>\n\n</ion-content>\n'/*ion-inline-end:"/home/chuy/Documentos/tripletres/Ionic3practicaNueva/Ionic3-CS2019/dezina/src/pages/about/about.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__providers_product_product__["a" /* ProductProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_product_product__["a" /* ProductProvider */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _b || Object])
     ], AboutPage);
     return AboutPage;
-    var _a;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=about.js.map
