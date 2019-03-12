@@ -25691,3 +25691,7 @@ ion-navbar.toolbar {
   padding-bottom: 4px;
   min-height: 46px;
 }
+
+page-about ion-slides {
+  height: 200px;
+}

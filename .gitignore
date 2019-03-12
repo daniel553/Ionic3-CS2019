@@ -28,6 +28,23 @@ todo/plugins/
 todo/plugins/android.json
 todo/plugins/ios.json
 todo/www/
+
+dezina/.idea/
+dezina/.ionic/
+dezina/.sourcemaps/
+dezina/.sass-cache/
+dezina/.tmp/
+dezina/.versions/
+dezina/coverage/
+dezina/dist/
+dezina/node_modules/
+dezina/tmp/
+dezina/temp/
+dezina/platforms/
+dezina/plugins/
+dezina/plugins/android.json
+dezina/plugins/ios.json
+dezina/www/
 $RECYCLE.BIN/
 
 .DS_Store
