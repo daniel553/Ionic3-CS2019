@@ -1,0 +1,33 @@
+<!--
+  This labbels show the content of the menu
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <!--
+    This labbels refresh the page with pull method
+    -->
+    <ion-refresher (ionRefresh)="addOneSong($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <!--
+    This labbels show the images and titles of the music, and print two buttons (share and listen)..
+    -->
+    <ion-card *ngFor="let music of allMusic">
+      <img [src]="music.image">
+      <ion-card-content>
+        <ion-card-title>{{music.name}}</ion-card-title>
+        <ion-item>
+          <button ion-button item-left>Share</button>
+          <button ion-button item-right>Listen</button>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+</ion-content>

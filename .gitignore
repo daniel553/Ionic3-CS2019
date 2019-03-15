@@ -46,6 +46,23 @@ dezina/plugins/android.json
 dezina/plugins/ios.json
 dezina/www/
 
+musica/.idea/
+musica/.ionic/
+musica/.sourcemaps/
+musica/.sass-cache/
+musica/.tmp/
+musica/.versions/
+musica/coverage/
+musica/dist/
+musica/node_modules/
+musica/tmp/
+musica/temp/
+musica/platforms/
+musica/plugins/
+musica/plugins/android.json
+musica/plugins/ios.json
+musica/www/
+
 $RECYCLE.BIN/
 
 .DS_Store
