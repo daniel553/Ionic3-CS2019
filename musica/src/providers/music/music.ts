@@ -29,7 +29,7 @@ export class MusicProvider {
 	* @function
   */
   getOneSong(){
-  	let oneSongUrl = API;
+  	let oneSongUrl = API + "id/1";
   	return this.http.get(oneSongUrl);
   }
 }

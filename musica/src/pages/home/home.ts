@@ -3,6 +3,7 @@ import { NavController, LoadingController, ActionSheetController } from 'ionic-a
 import { MusicProvider } from "../../providers/music/music";
 import { SocialSharing } from "@ionic-native/social-sharing";
 
+import { MusicPlayerPage } from "../music-player/music-player";
 
 @Component({
   selector: 'page-home',
@@ -49,10 +50,15 @@ export class HomePage {
   addOneSong(refresher){
   	this.musicProvider.getOneSong()
   		.subscribe((oneSong) => {
-  			this.allMusic.unshift(oneSong[0]);
+  			this.allMusic.unshift(oneSong);
   			refresher.complete();
   		});
   }
+
+  /**
+  *This function allow the user to share the song on social media
+  *@function
+  */
 
   shareSong(music){
     let shareSongActionSheet = this.actionSheetController.create({
@@ -86,5 +92,15 @@ export class HomePage {
       ]
     });
     shareSongActionSheet.present();
+  }
+
+  /**
+  * This function will play the songs
+  * @function
+  */
+  goToMusicPlayer(music){
+    this.navCtrl.push(MusicPlayerPage, {
+      music: music
+    });
   }
 }
