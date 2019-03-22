@@ -103,4 +103,12 @@ export class HomePage {
       music: music
     });
   }
+
+  /**
+  * This function add music to favorite list
+  * @function
+  */
+  addToFavorites(music){
+    this.musicProvider.addToFavorites(music);
+  }
 }

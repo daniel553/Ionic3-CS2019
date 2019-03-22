@@ -21,6 +21,10 @@
     This labbels show the images and titles of the music, and print two buttons (share and listen)..
     -->
     <ion-card *ngFor="let music of allMusic">
+      <ion-card-header>
+        <button (click)="addToFavorites(music)" ion-button block>Add to Favorites</button>
+      </ion-card-header>
+
       <img [src]="music.image">
       <ion-card-content>
         <ion-card-title>{{music.name}}</ion-card-title>
